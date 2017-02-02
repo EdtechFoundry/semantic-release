@@ -1,0 +1,19 @@
+machine:
+  environment:
+    APP_NAME: etf-service-conversation-sdk
+    DEBIAN_FRONTEND: noninteractive
+  node:
+    version: 6.2
+  ruby:
+    version: 2.3.0
+
+dependencies:
+  override:
+    - npm install
+    - npm prune
+
+deployment:
+  prod:
+    branch: caribou
+    commands:
+      - npm run semantic-release
