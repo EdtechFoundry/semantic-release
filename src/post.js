@@ -1,4 +1,6 @@
 var url = require('url')
+var npmlog = require('npmlog')
+npmlog.heading = 'semantic-release'
 
 var gitHead = require('git-head')
 var GitHubApi = require('github')
@@ -33,6 +35,8 @@ module.exports = function (config, cb) {
         draft: !!options.debug,
         body: log
       }
+
+      npmlog.verbose('pre release', release)
 
       if (options.debug && !options.githubToken) {
         return cb(null, false, release)
